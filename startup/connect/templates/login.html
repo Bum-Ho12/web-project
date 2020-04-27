@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block body_block %}
+
+<div class="container">
+    <div class="col-3">
+        <h1>
+            <form method="POST">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% if request.GET.next %}
+                    <input type="hidden" name="next" value="{{request.GET.next}}" >
+                {% endif %}
+                <input type="submit" value="Login" class="btn btn-danger">
+            </form>
+        </h1>
+       
+    </div>
+</div>
+{% endblock %}
